@@ -271,7 +271,7 @@ export const experience: ExperienceContent[] = [
 		company: "Sakata Innovation Center",
 		role: "Co-Facilitator",
 		type: "Tasikmalaya, Indonesia",
-		period: "Jul 2025 – Present",
+		period: "Jul 2025 – Dec 2025",
 		bullets: [
 			"Served as a Co-Facilitator in the Coding & Artificial Intelligence program at Sakata Innovation Center.",
 			"Facilitated learning sessions across three training classes and served as the primary coordinator for one class with 27 teacher participants.",
