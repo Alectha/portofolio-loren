@@ -174,7 +174,6 @@ export const projects: ProjectContent[] = [
 		],
 		docs: ["project-levelme-01.jpeg","project-levelme-02.jpeg","project-levelme-03.jpeg","project-levelme-04.jpeg"],
 		links: [{ label: "Figma Prototype", url: "#" }],
-		links: [{ label: "Figma Prototype", url: "https://www.figma.com/proto/k3Ju9mOeX8Tj3PHfmAii0r/Conneclab?node-id=414-8534&t=YHJBUwUSQiDroEP3-1" }],
 		color: "teal",
 	},
 	{
