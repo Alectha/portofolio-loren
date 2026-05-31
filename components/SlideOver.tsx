@@ -57,14 +57,14 @@ export default function SlideOver({
 						transition={{ type: "spring", damping: 25, stiffness: 200 }}
 						className="fixed top-0 right-0 h-full w-full max-w-md bg-[var(--bg-base)] border-l border-[var(--glass-border)] z-50 flex flex-col shadow-2xl overflow-hidden glass-card !rounded-none !border-y-0 !border-r-0"
 					>
-						<div className="p-6 border-b border-gray-200 flex justify-between items-start bg-white/50 shrink-0">
-							<div className="pr-8">
+						<div className="p-5 sm:p-6 border-b border-gray-200 flex justify-between items-start gap-4 bg-white/50 shrink-0">
+							<div className="pr-0 sm:pr-8">
 								{data.category && (
-									<span className={`text-[10px] uppercase tracking-wider font-extrabold mb-2 block ${getTextColorClass(data.color)}`}>
+									<span className={`inline-flex items-center rounded-full px-3 py-1 text-xs sm:text-sm uppercase tracking-wider font-extrabold mb-3 ${getTextColorClass(data.color)} bg-white border border-gray-200 shadow-sm`}>
 										{data.category}
 									</span>
 								)}
-								<h2 className="font-extrabold text-2xl leading-tight text-[var(--text-primary)]">{data.title}</h2>
+								<h2 className="font-extrabold text-xl sm:text-2xl leading-tight text-[var(--text-primary)]">{data.title}</h2>
 								{data.period && <p className="text-sm font-bold text-[var(--text-tertiary)] mt-2">{data.period}</p>}
 							</div>
 							<button
@@ -76,8 +76,8 @@ export default function SlideOver({
 							</button>
 						</div>
 
-						<div className="flex-1 overflow-y-auto custom-scrollbar p-6">
-							<div className="mb-8">
+						<div className="flex-1 overflow-y-auto custom-scrollbar p-5 sm:p-6">
+							<div className="mb-7 sm:mb-8">
 								<h4 className="text-xs uppercase tracking-wider text-[var(--text-tertiary)] font-bold mb-3">
 									Documentation
 								</h4>
@@ -100,15 +100,15 @@ export default function SlideOver({
 								</div>
 							</div>
 
-							<div className="mb-8">
+							<div className="mb-7 sm:mb-8">
 								<h4 className="text-xs uppercase tracking-wider text-[var(--text-tertiary)] font-bold mb-4">
 									Details
 								</h4>
 
-								{data.summary && <p className="text-[var(--text-secondary)] text-sm font-medium mb-6 leading-relaxed bg-white/60 p-4 rounded-xl border border-gray-200">{data.summary}</p>}
+								{data.summary && <p className="text-[var(--text-secondary)] text-sm font-medium mb-5 sm:mb-6 leading-relaxed bg-white/60 p-4 rounded-xl border border-gray-200">{data.summary}</p>}
 
 								{data.bullets && (
-									<ul className="flex flex-col gap-4">
+									<ul className="flex flex-col gap-3 sm:gap-4">
 										{data.bullets.map((bullet) => (
 											<li key={bullet} className="text-sm font-medium text-[var(--text-primary)] flex items-start gap-3">
 												<span className={`mt-1.5 shrink-0 w-2 h-2 rounded-full ${getBgColorClass(data.color)}`} />
@@ -156,7 +156,7 @@ export default function SlideOver({
 						</div>
 
 						{data.links && data.links.length > 0 && (
-							<div className="p-6 border-t border-gray-200 bg-white/80 shrink-0 flex gap-3">
+							<div className="p-5 sm:p-6 border-t border-gray-200 bg-white/80 shrink-0 flex flex-col sm:flex-row gap-3">
 								{data.links.map((link) => (
 									<a
 										key={link.label}

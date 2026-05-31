@@ -1,20 +1,20 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { Award, Sparkles } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Award } from "lucide-react";
 import { about } from "../data/content";
 import { FadeIn, GlassCard, getBgColorClass } from "./shared";
 
 function GpaCountUp({ active }: { active: boolean }) {
 	const target = 3.82;
-	const targetStr = target.toFixed(2); // e.g. "3.82"
-	const chars = targetStr.split("");
+	const targetStr = target.toFixed(2);
 
-	const [digits, setDigits] = useState<string[]>(chars.map((c) => (c === "." ? "." : "0")));
-	const [scales, setScales] = useState<number[]>(chars.map(() => 1));
+	const [digits, setDigits] = useState<string[]>(targetStr.split("").map((c) => (c === "." ? "." : "0")));
+	const [scales, setScales] = useState<number[]>(targetStr.split("").map(() => 1));
 
 	useEffect(() => {
 		if (!active) return;
+		const chars = targetStr.split("");
 
 		const totalDuration = 4000; // slower overall
 		const stagger = 450; // ms delay between digit starts
@@ -72,7 +72,7 @@ function GpaCountUp({ active }: { active: boolean }) {
 			window.clearTimeout(finishTimer);
 			setScales(chars.map(() => 1));
 		};
-	}, [active]);
+	}, [active, targetStr]);
 
 	return (
 		<span aria-hidden="true" className="inline-flex items-baseline gap-0 whitespace-nowrap">
@@ -89,14 +89,10 @@ function GpaCountUp({ active }: { active: boolean }) {
 }
 
 function EducationCard() {
-	const [shouldAnimate, setShouldAnimate] = useState(false);
-
-	useEffect(() => {
-		setShouldAnimate(true);
-	}, []);
+	const [shouldAnimate] = useState(true);
 
 	return (
-		<GlassCard className="p-6">
+		<GlassCard className="p-5 sm:p-6">
 			<div className="flex flex-col gap-1">
 				<span className="text-[var(--text-tertiary)] text-xs font-bold mb-1 uppercase tracking-wider">
 					Education
@@ -117,16 +113,16 @@ function EducationCard() {
 
 export default function AboutSection() {
 	return (
-		<section id="about" className="py-20 md:py-24 px-6 max-w-5xl mx-auto">
+		<section id="about" className="py-16 md:py-24 px-4 sm:px-6 max-w-5xl mx-auto">
 			<FadeIn>
-				<h2 className="font-extrabold text-3xl md:text-4xl mb-12 flex items-center gap-4 tracking-tight text-[var(--text-primary)]">
+				<h2 className="font-extrabold text-3xl md:text-4xl mb-10 md:mb-12 flex items-center gap-4 tracking-tight text-[var(--text-primary)]">
 					<span className="w-8 md:w-12 h-[2px] bg-[var(--text-primary)]" /> About Me
 				</h2>
 			</FadeIn>
 
-			<div className="grid md:grid-cols-12 gap-10">
-				<div className="md:col-span-7 flex flex-col gap-8">
-					<div className="text-[var(--text-secondary)] text-lg leading-relaxed">
+			<div className="grid md:grid-cols-12 gap-8 md:gap-10">
+				<div className="md:col-span-7 flex flex-col gap-7 md:gap-8">
+					<div className="text-[var(--text-secondary)] text-base sm:text-lg leading-relaxed">
 						<p>{about.bio}</p>
 					</div>
 
@@ -151,11 +147,11 @@ export default function AboutSection() {
 						<h3 className="text-sm font-bold uppercase tracking-wider text-[var(--text-tertiary)] mb-4">
 							Languages
 						</h3>
-						<div className="flex flex-wrap gap-4">
+						<div className="flex flex-wrap gap-3 sm:gap-4">
 							{about.languages.map((language) => (
 								<div
 									key={language.lang}
-									className="text-[var(--text-secondary)] text-sm font-bold flex items-center gap-2 bg-white border border-[#E2E8F0] px-3 py-1.5 rounded-md shadow-sm"
+									className="text-[var(--text-secondary)] text-xs sm:text-sm font-bold flex items-center gap-2 bg-white border border-[#E2E8F0] px-3 py-1.5 rounded-md shadow-sm"
 								>
 									<span className="text-[var(--text-primary)]">{language.lang}</span>
 									<span className="w-1 h-1 rounded-full bg-[var(--text-tertiary)]" />
@@ -166,7 +162,7 @@ export default function AboutSection() {
 					</FadeIn>
 				</div>
 
-				<div className="md:col-span-5 flex flex-col gap-5">
+				<div className="md:col-span-5 flex flex-col gap-4 sm:gap-5">
 					<FadeIn delay={0.4}>
 						<EducationCard />
 					</FadeIn>

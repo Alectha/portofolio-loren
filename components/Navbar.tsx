@@ -67,19 +67,19 @@ export default function Navbar() {
 	}, []);
 
 	return (
-		<nav className="fixed top-0 left-0 right-0 z-40 px-4 sm:px-6 py-4 flex justify-center pointer-events-none">
+		<nav className="fixed top-0 left-0 right-0 z-40 px-3 sm:px-4 sm:px-6 py-3 sm:py-4 flex justify-center pointer-events-none">
 			<div className="w-full max-w-7xl flex items-center justify-between gap-4 pointer-events-auto">
 				<a
 					href="#home"
-					className="glass-card shrink-0 h-14 px-5 sm:px-6 rounded-2xl flex items-center gap-3 border border-white/40 bg-white/60 backdrop-blur-xl shadow-[0_12px_40px_rgba(15,23,42,0.10)]"
+					className="glass-card shrink-0 h-12 sm:h-14 px-4 sm:px-5 sm:px-6 rounded-2xl flex items-center gap-2 sm:gap-3 border border-white/40 bg-white/60 backdrop-blur-xl shadow-[0_12px_40px_rgba(15,23,42,0.10)]"
 				>
-					<span className="text-sm sm:text-[15px] font-extrabold tracking-tight text-[var(--text-primary)] leading-tight whitespace-nowrap">
+					<span className="text-xs sm:text-sm sm:text-[15px] font-extrabold tracking-tight text-[var(--text-primary)] leading-tight whitespace-nowrap">
 						Lauren Portofolio
 					</span>
 				</a>
 
 				<div className="hidden md:flex ml-auto">
-					<div className="glass-card h-14 px-6 rounded-2xl flex items-center gap-8 border border-white/40 bg-white/55 backdrop-blur-xl shadow-[0_12px_40px_rgba(15,23,42,0.10)] whitespace-nowrap">
+					<div className="glass-card h-14 px-6 rounded-2xl flex items-center gap-6 lg:gap-8 border border-white/40 bg-white/55 backdrop-blur-xl shadow-[0_12px_40px_rgba(15,23,42,0.10)] whitespace-nowrap">
 						{links.map((link) => (
 							<a
 								key={link}
@@ -95,7 +95,7 @@ export default function Navbar() {
 
 				<button
 					type="button"
-					className="md:hidden glass-card shrink-0 h-14 w-14 rounded-2xl flex items-center justify-center border border-white/40 bg-white/60 backdrop-blur-xl shadow-[0_12px_40px_rgba(15,23,42,0.10)] text-[var(--text-primary)] pointer-events-auto"
+					className="md:hidden glass-card shrink-0 h-12 w-12 rounded-2xl flex items-center justify-center border border-white/40 bg-white/60 backdrop-blur-xl shadow-[0_12px_40px_rgba(15,23,42,0.10)] text-[var(--text-primary)] pointer-events-auto"
 					onClick={() => setIsOpen(true)}
 				>
 					<Menu size={24} />
@@ -117,9 +117,9 @@ export default function Navbar() {
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1 }}
 						exit={{ opacity: 0 }}
-						className="fixed inset-0 bg-white/92 backdrop-blur-xl z-50 p-6 flex flex-col pointer-events-auto"
+						className="fixed inset-0 bg-white/92 backdrop-blur-xl z-50 p-5 sm:p-6 flex flex-col pointer-events-auto"
 					>
-						<div className="flex justify-between items-center mb-12">
+						<div className="flex justify-between items-center mb-10 sm:mb-12 gap-4">
 							<div className="glass-card px-4 py-2 rounded-2xl border border-white/40 bg-white/60 backdrop-blur-xl font-extrabold text-[var(--text-primary)] shadow-[0_12px_40px_rgba(15,23,42,0.10)]">
 								Lauren Portofolio
 							</div>
@@ -131,7 +131,7 @@ export default function Navbar() {
 								<X size={28} />
 							</button>
 						</div>
-						<div className="flex flex-col gap-6 text-2xl font-bold">
+						<div className="flex flex-col gap-5 sm:gap-6 text-2xl font-bold">
 							{links.map((link) => (
 								<a
 									key={link}

@@ -349,7 +349,7 @@ export const organizations: OrganizationContent[] = [
 				],
 			},
 		],
-		docs: ["experience-hmsi-01.jpeg","experience-hmsi-02.jpeg","experience-hmsi-03.jpeg","experience-hmsi-sivolution-01.jpeg"],
+		docs: ["experience-hmsi-01.jpeg","experience-hmsi-02.jpeg","experience-hmsi-03.jpeg","experience-hmsi-04.jpeg","experience-hmsi-05.jpeg","experience-hmsi-06.jpeg","experience-hmsi-sivolution-01.jpeg"],
 		tags: ["Leadership", "Event Management", "Content Strategy"],
 		color: "teal",
 	},

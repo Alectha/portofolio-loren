@@ -19,8 +19,8 @@ const AccordionItem = ({ role }: { role: OrganizationRoleContent }) => {
 					setIsOpen(!isOpen);
 				}}
 			>
-				<span className="font-bold text-sm text-[var(--text-primary)] pr-4">{role.title}</span>
-				<ChevronDown size={16} className={`text-[var(--text-tertiary)] transition-transform shrink-0 ${isOpen ? "rotate-180" : ""}`} />
+				<span className="font-bold text-sm text-(--text-primary) pr-4">{role.title}</span>
+				<ChevronDown size={16} className={`text-(--text-tertiary) transition-transform shrink-0 ${isOpen ? "rotate-180" : ""}`} />
 			</button>
 			<AnimatePresence>
 				{isOpen && (
@@ -34,7 +34,7 @@ const AccordionItem = ({ role }: { role: OrganizationRoleContent }) => {
 							{role.bullets.map((bullet) => (
 								<li
 									key={bullet}
-									className="text-xs text-[var(--text-secondary)] font-medium pl-4 relative before:content-[''] before:absolute before:left-0 before:top-1.5 before:w-1.5 before:h-1.5 before:bg-[var(--text-tertiary)] before:rounded-full leading-relaxed"
+									className="text-xs text-(--text-secondary) font-medium pl-4 relative before:content-[''] before:absolute before:left-0 before:top-1.5 before:w-1.5 before:h-1.5 before:bg-(--text-tertiary) before:rounded-full leading-relaxed"
 								>
 									{bullet}
 								</li>
@@ -55,25 +55,25 @@ export default function ExperienceSection({
 	const [activeTab, setActiveTab] = useState<"work" | "organization">("work");
 
 	return (
-		<section id="experience" className="py-20 md:py-24 px-6 max-w-5xl mx-auto">
+		<section id="experience" className="py-16 md:py-24 px-4 sm:px-6 max-w-5xl mx-auto">
 			<FadeIn>
-				<div className="flex flex-col md:flex-row md:items-center justify-between mb-12 gap-6">
-					<h2 className="font-extrabold text-3xl md:text-4xl flex items-center gap-4 tracking-tight text-[var(--text-primary)]">
-						<span className="w-8 md:w-12 h-[2px] bg-[var(--text-primary)]" /> Experience
+				<div className="flex flex-col md:flex-row md:items-center justify-between mb-10 md:mb-12 gap-5 md:gap-6">
+					<h2 className="font-extrabold text-3xl md:text-4xl flex items-center gap-4 tracking-tight text-(--text-primary)">
+						<span className="w-8 md:w-12 h-0.5 bg-(--text-primary)" /> Experience
 					</h2>
 
-					<div className="flex items-center p-1 bg-white border border-[var(--glass-border)] rounded-full shadow-sm w-fit">
+					<div className="flex items-center p-1 bg-white border border-(--glass-border) rounded-full shadow-sm w-full sm:w-fit overflow-x-auto">
 						<button
 							type="button"
 							onClick={() => setActiveTab("work")}
-							className={`px-6 py-2.5 rounded-full text-sm font-bold transition-all ${activeTab === "work" ? "bg-[#0F172A] text-white shadow-md" : "text-[var(--text-secondary)] hover:text-black"}`}
+							className={`px-4 sm:px-6 py-2.5 rounded-full text-sm font-bold transition-all whitespace-nowrap ${activeTab === "work" ? "bg-[#0F172A] text-white shadow-md" : "text-(--text-secondary) hover:text-black"}`}
 						>
 							Work
 						</button>
 						<button
 							type="button"
 							onClick={() => setActiveTab("organization")}
-							className={`px-6 py-2.5 rounded-full text-sm font-bold transition-all ${activeTab === "organization" ? "bg-[#0F172A] text-white shadow-md" : "text-[var(--text-secondary)] hover:text-black"}`}
+							className={`px-4 sm:px-6 py-2.5 rounded-full text-sm font-bold transition-all whitespace-nowrap ${activeTab === "organization" ? "bg-[#0F172A] text-white shadow-md" : "text-(--text-secondary) hover:text-black"}`}
 						>
 							Organization
 						</button>
@@ -81,7 +81,7 @@ export default function ExperienceSection({
 				</div>
 			</FadeIn>
 
-			<div className="min-h-[500px]">
+			<div style={{ minHeight: 500 }}>
 				<AnimatePresence mode="wait">
 					{activeTab === "work" && (
 						<motion.div
@@ -90,12 +90,12 @@ export default function ExperienceSection({
 							animate={{ opacity: 1, y: 0 }}
 							exit={{ opacity: 0, y: -10 }}
 							transition={{ duration: 0.3 }}
-							className="relative border-l-2 border-gray-200 ml-3 md:ml-6 flex flex-col gap-10"
+							className="relative border-l-2 border-gray-200 ml-2 sm:ml-3 md:ml-6 flex flex-col gap-8 sm:gap-10"
 						>
 							{experience.map((item, index) => (
 								<FadeIn key={item.id} delay={index * 0.1}>
 									<div
-										className="relative pl-8 md:pl-12 group"
+										className="relative pl-7 sm:pl-8 md:pl-12 group"
 										onMouseOver={(e) => {
 											const root = e.currentTarget as HTMLElement;
 											const dot = root.querySelector('.timeline-dot');
@@ -108,30 +108,31 @@ export default function ExperienceSection({
 										}}
 									>
 										<div
-											className={`absolute -left-[7px] top-6 w-[12px] h-[12px] rounded-full ring-4 ring-white transition-all duration-300 timeline-dot ${index === 0 ? "bg-[var(--accent-teal)] shadow-[0_0_8px_var(--accent-teal)]" : "bg-gray-300"}`} />
+										style={{ left: -7, top: 24, width: 12, height: 12 }}
+										className={`absolute rounded-full ring-4 ring-white transition-all duration-300 timeline-dot ${index === 0 ? "bg-(--accent-teal) shadow-[0_0_8px_var(--accent-teal)]" : "bg-gray-300"}`} />
 
-									<GlassCard
+										<GlassCard
 												onClick={() => onOpenSlideOver({ ...item, title: item.company, category: item.role, type: "experience" })}
-												className="p-6 md:p-8 relative overflow-hidden"
+											className="p-5 sm:p-6 md:p-8 relative overflow-hidden"
 											>
-											<div className="flex flex-col md:flex-row md:items-center justify-between mb-3 gap-2 mt-2 md:mt-0">
-												<h3 className="text-xl font-extrabold text-[var(--text-primary)] group-hover:text-[var(--accent-teal)] transition-colors">
+										<div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3 gap-2 mt-2 md:mt-0">
+											<h3 className="text-lg sm:text-xl font-extrabold text-(--text-primary) group-hover:text-(--accent-teal) transition-colors">
 													{item.role}
 												</h3>
-												<span className="text-sm font-bold text-[var(--text-tertiary)] shrink-0">{item.period}</span>
+											<span className="text-sm font-bold text-(--text-tertiary) shrink-0">{item.period}</span>
 											</div>
 
-											<div className="flex flex-wrap items-center gap-2 text-[var(--accent-teal)] mb-6 text-sm font-bold">
+										<div className="flex flex-wrap items-center gap-2 text-(--accent-teal) mb-5 sm:mb-6 text-sm font-bold">
 												<Briefcase size={16} />
 												{item.company}
 												<span className="w-1.5 h-1.5 rounded-full bg-gray-300 mx-1" />
-												<span className="text-[var(--text-secondary)]">{item.type}</span>
+											<span className="text-(--text-secondary)">{item.type}</span>
 											</div>
 
 											<ul className="flex flex-col gap-3 mb-6">
 												{item.bullets.slice(0, 2).map((bullet) => (
-													<li key={bullet} className="text-[var(--text-secondary)] text-sm font-medium flex items-start gap-3">
-														<span className="text-[var(--accent-teal)] mt-1 shrink-0">
+												<li key={bullet} className="text-(--text-secondary) text-sm font-medium flex items-start gap-3">
+													<span className="text-(--accent-teal) mt-1 shrink-0">
 															<ChevronRight size={14} />
 														</span>
 														<span className="line-clamp-2 leading-relaxed">{bullet}</span>
@@ -139,15 +140,15 @@ export default function ExperienceSection({
 												))}
 											</ul>
 
-											<div className="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
-												<div className="flex gap-2">
+											<div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mt-auto pt-4 border-t border-gray-100 gap-3 sm:gap-2">
+												<div className="flex flex-wrap gap-2">
 													{item.tags.slice(0, 2).map((tag) => (
-														<span key={tag} className="text-[11px] font-bold px-2.5 py-1 rounded bg-gray-100 text-[var(--text-secondary)] border border-gray-200">
+														<span key={tag} className="text-[11px] font-bold px-2.5 py-1 rounded bg-gray-100 text-(--text-secondary) border border-gray-200">
 															{tag}
 														</span>
 													))}
 												</div>
-												<span className="text-xs font-bold text-[var(--text-primary)] group-hover:text-[var(--accent-teal)] transition-colors flex items-center gap-1">
+												<span className="text-xs font-bold text-(--text-primary) group-hover:text-(--accent-teal) transition-colors flex items-center gap-1 self-start sm:self-auto">
 													View Details <ArrowRight size={14} />
 												</span>
 											</div>
@@ -165,42 +166,42 @@ export default function ExperienceSection({
 							animate={{ opacity: 1, y: 0 }}
 							exit={{ opacity: 0, y: -10 }}
 							transition={{ duration: 0.3 }}
-							className="grid md:grid-cols-2 gap-6"
+								className="grid md:grid-cols-2 gap-5 md:gap-6"
 						>
 							{organizations.map((organization, index) => (
 								<FadeIn key={organization.id} delay={index * 0.1}>
 									<GlassCard
 										onClick={() => onOpenSlideOver({ ...organization, title: organization.org, category: organization.fullName, type: "org" })}
-										className="p-6 md:p-8 h-full flex flex-col relative group"
+										className="p-5 sm:p-6 md:p-8 h-full flex flex-col relative group"
 									>
 										<div className="mb-6">
-											<span className="text-xs font-bold text-[var(--text-tertiary)] block mb-2">{organization.period}</span>
-											<h3 className="text-2xl font-extrabold tracking-tight text-[var(--text-primary)] group-hover:text-[var(--accent-teal)] transition-colors">
+											<span className="text-xs font-bold text-(--text-tertiary) block mb-2">{organization.period}</span>
+											<h3 className="text-xl sm:text-2xl font-extrabold tracking-tight text-(--text-primary) group-hover:text-(--accent-teal) transition-colors">
 												{organization.org}
 											</h3>
-											<p className="text-[var(--text-secondary)] text-sm font-bold mt-1">{organization.fullName}</p>
+											<p className="text-(--text-secondary) text-sm font-bold mt-1">{organization.fullName}</p>
 										</div>
 
-										<div className="flex-grow flex flex-col gap-3 mb-6" onClick={(event) => event.stopPropagation()}>
+										<div className="grow flex flex-col gap-3 mb-6" onClick={(event) => event.stopPropagation()}>
 											{organization.roles.slice(0, 2).map((role) => (
 												<AccordionItem key={role.title} role={role} />
 											))}
 											{organization.roles.length > 2 && (
-												<div className="text-xs font-bold text-[var(--text-tertiary)] text-center py-2.5 border border-dashed border-gray-300 rounded-xl cursor-pointer hover:bg-gray-50 transition-colors">
+												<div className="text-xs font-bold text-(--text-tertiary) text-center py-2.5 border border-dashed border-gray-300 rounded-xl cursor-pointer hover:bg-gray-50 transition-colors">
 													+ {organization.roles.length - 2} more roles (click card to view)
 												</div>
 											)}
 										</div>
 
-										<div className="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
+										<div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mt-auto pt-4 border-t border-gray-100 gap-3 sm:gap-2">
 											<div className="flex flex-wrap gap-2">
 												{organization.tags.slice(0, 2).map((tag) => (
-													<span key={tag} className="text-[11px] font-bold px-2.5 py-1 rounded bg-gray-100 text-[var(--text-secondary)] border border-gray-200">
+													<span key={tag} className="text-[11px] font-bold px-2.5 py-1 rounded bg-gray-100 text-(--text-secondary) border border-gray-200">
 														{tag}
 													</span>
 												))}
 											</div>
-											<span className="text-[var(--text-tertiary)] group-hover:text-[var(--accent-teal)] transition-colors">
+											<span className="text-(--text-tertiary) group-hover:text-(--accent-teal) transition-colors self-start sm:self-auto">
 												<ArrowRight size={18} />
 											</span>
 										</div>
